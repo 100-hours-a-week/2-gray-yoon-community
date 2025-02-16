@@ -1,0 +1,61 @@
+:root {
+  --color-violet: #7f6aee;
+  --color-light-violet: #aca0eb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.hidden {
+  display: none;
+}
+
+.input-box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.input-box__label {
+  font-weight: 700;
+}
+
+.input-box__input {
+  padding: 8px 10px;
+  width: 360px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  outline: none;
+}
+
+.input-box__input::placeholder {
+  font-size: 14px;
+}
+
+.input-box__helper-text {
+  position: absolute;
+  bottom: 0;
+  transform: translateY(calc(100% + 4px));
+  color: red;
+}

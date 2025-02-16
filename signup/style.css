@@ -103,6 +103,7 @@
   font-weight: 700;
   color: #fff;
   background-color: var(--color-light-violet);
+  cursor: not-allowed;
 }
 
 .login-btn {

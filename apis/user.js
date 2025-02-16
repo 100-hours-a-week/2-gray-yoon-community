@@ -2,6 +2,12 @@ export const getAllUsers = () => {
   return JSON.parse(localStorage.getItem("users"));
 };
 
+export const getUserDataWithEmail = (email) => {
+  const allUsers = getAllUsers();
+
+  return allUsers.find((user) => user.email === email);
+};
+
 export const signup = (data) => {
   const users = getAllUsers();
 
@@ -10,4 +16,10 @@ export const signup = (data) => {
   } else {
     localStorage.setItem("users", JSON.stringify([data]));
   }
+};
+
+export const confirmPassword = (email, password) => {
+  const userData = getUserDataWithEmail(email);
+
+  return userData?.password === password;
 };

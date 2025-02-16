@@ -1,5 +1,9 @@
 import { getAllUsers, signup } from "../apis/user.js";
-import { EMAIL_REGEX, NICKNAME_REGEX } from "../constants/regex.js";
+import {
+  EMAIL_REGEX,
+  NICKNAME_REGEX,
+  PASSWORD_REGEX,
+} from "../constants/regex.js";
 
 const updateSignupBtnState = () => {
   if (
@@ -67,6 +71,10 @@ passwordInput.addEventListener("change", (e) => {
 
   if (value === "") {
     passwordHelperText.textContent = "비밀번호를 입력해주세요.";
+    isPasswordValid = false;
+  } else if (!PASSWORD_REGEX.test(value)) {
+    passwordHelperText.textContent =
+      "비밀번호는 8자 이상, 20자 이하이며, 대소문자, 숫자, 특수문자를 각각 최소 1개 포함해야 합니다.";
     isPasswordValid = false;
   } else {
     passwordHelperText.textContent = "";

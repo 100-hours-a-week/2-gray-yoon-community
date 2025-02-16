@@ -3,14 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- 브라우저의 기본 CSS 리셋 -->
     <link
       href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css"
       rel="stylesheet"
     />
-    <!-- CSS 연결 -->
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="/login/login.css" />
+    <link rel="stylesheet" href="/login/style.css" />
+    <script type="module" src="login/main.js" defer></script>
     <title>Login | Gray's Community</title>
   </head>
   <body>
@@ -25,22 +24,26 @@
             <label for="email" class="input-box__label">이메일</label>
             <input
               id="email"
-              class="input-box__input"
+              name="email"
+              class="input-box__input email"
               type="email"
               placeholder="이메일을 입력하세요"
             />
+            <p class="input-box__helper-text email"></p>
           </div>
           <div class="input-box">
             <label for="password" class="input-box__label">비밀번호</label>
             <input
               id="password"
-              class="input-box__input"
+              name="password"
+              class="input-box__input password"
               type="password"
               placeholder="비밀번호을 입력하세요"
             />
+            <p class="input-box__helper-text password"></p>
           </div>
         </div>
-        <button class="login-btn">로그인</button>
+        <button class="login-btn" disabled>로그인</button>
       </form>
       <a class="signup-btn" href="signup/index.html">회원가입</a>
     </main>

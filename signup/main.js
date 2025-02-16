@@ -30,14 +30,12 @@ const checkEmailDuplication = (value) => {
   return true;
 };
 
-let email;
 let isEmailValid = false;
 const emailInput = document.querySelector(".input-box__input.email");
 const emailHelperText = document.querySelector(".input-box__helper-text.email");
 
 emailInput.addEventListener("change", (e) => {
   const value = e.target.value.trim();
-  email = value;
 
   if (value === "") {
     emailHelperText.textContent = "이메일을 입력해주세요.";
@@ -105,7 +103,6 @@ confirmpasswordInput.addEventListener("change", (e) => {
   updateSignupBtnState();
 });
 
-let nickname;
 let isNicknameValid = false;
 const nicknameInput = document.querySelector(".input-box__input.nickname");
 const nicknameHelperText = document.querySelector(
@@ -114,7 +111,6 @@ const nicknameHelperText = document.querySelector(
 
 nicknameInput.addEventListener("change", (e) => {
   const value = e.target.value.trim();
-  nickname = value;
 
   if (value === "") {
     nicknameHelperText.textContent = "닉네임을 입력해주세요.";
@@ -136,6 +132,12 @@ const form = document.querySelector(".content__form");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+
+  const formData = new FormData(e.target);
+
+  const email = formData.get("email").trim();
+  const password = formData.get("password").trim();
+  const nickname = formData.get("nickname").trim();
 
   signup({
     email,

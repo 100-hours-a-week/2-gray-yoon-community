@@ -8,6 +8,10 @@ export const getUserDataWithEmail = (email) => {
   return allUsers.find((user) => user.email === email);
 };
 
+export const getCurrentUser = () => {
+  return JSON.parse(localStorage.getItem("currentUser"));
+};
+
 export const signup = (data) => {
   const users = getAllUsers();
 

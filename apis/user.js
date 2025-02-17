@@ -28,6 +28,25 @@ export const confirmPassword = (email, password) => {
   return userData?.password === password;
 };
 
+export const updatePassword = (password) => {
+  const currentUser = getCurrentUser();
+  const users = getAllUsers();
+
+  localStorage.setItem(
+    "users",
+    JSON.stringify(
+      users.map((user) =>
+        user.email === currentUser.email
+          ? {
+              ...user,
+              password,
+            }
+          : user
+      )
+    )
+  );
+};
+
 export const logout = () => {
   localStorage.removeItem("currentUser");
   window.location.href = "/index.html";

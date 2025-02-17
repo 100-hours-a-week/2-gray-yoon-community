@@ -3,9 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="main.js" defer></script>
+    <title>Edit Password | Gray's Community</title>
   </head>
   <body>
-    asdfa
+    <header class="navbar">
+      <div class="navbar__content">
+        <a class="prev-btn" href="/index.html">
+          <i class="fa-solid fa-chevron-left"></i>
+        </a>
+        <h1 class="navbar__title">아무 말 대잔치</h1>
+      </div>
+    </header>
+
+    <main class="content">
+      <h2 class="content__title">비밀번호 수정</h2>
+      <form class="content__form">
+        <div class="form-group">
+          <div class="input-box">
+            <label for="password" class="input-box__label">비밀번호</label>
+            <input
+              id="password"
+              name="password"
+              class="input-box__input password"
+              type="password"
+              placeholder="비밀번호를 입력하세요"
+            />
+            <p class="input-box__helper-text password"></p>
+          </div>
+          <div class="input-box">
+            <label for="confirm-password" class="input-box__label"
+              >비밀번호 확인</label
+            >
+            <input
+              id="confirm-password"
+              name="confirm-password"
+              class="input-box__input confirm-password"
+              type="password"
+              placeholder="비밀번호를 한번 더 입력하세요"
+            />
+            <p class="input-box__helper-text confirm-password"></p>
+          </div>
+        </div>
+        <button class="change-password-btn" disabled>수정하기</button>
+      </form>
+    </main>
   </body>
 </html>

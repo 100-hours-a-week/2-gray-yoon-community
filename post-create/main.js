@@ -102,7 +102,7 @@ form.addEventListener("submit", (e) => {
 
   createPost({
     id: crypto.randomUUID(),
-    author: getCurrentUser().nickname,
+    author: getCurrentUser(),
     title,
     content,
     image: postImage || null,

@@ -1,4 +1,4 @@
-import { getAllPosts } from "../apis/post.js";
+import { addView, getAllPosts } from "../apis/post.js";
 import { getCurrentUser } from "../apis/user.js";
 import { formatTimestamp } from "../utils/format.js";
 
@@ -28,6 +28,7 @@ const renderPosts = (posts) => {
 
     postLi.addEventListener("click", () => {
       window.location.href = `/post-detail/index.html?id=${id}`;
+      addView(id);
     });
 
     postLi.innerHTML = `
@@ -35,15 +36,15 @@ const renderPosts = (posts) => {
         <h4 class="title">${title}</h4>
         <div class="info">
           <div class="info__metadata">
-            <p class="likes">좋아요 ${likes}</p>
-            <p class="comments">댓글 ${comments}</p>
+            <p class="likes">좋아요 ${likes.length}</p>
+            <p class="comments">댓글 ${comments.length}</p>
             <p class="views">조회수 ${views}</p>
           </div>
           <p class="date">${formatTimestamp(date)}</p>
         </div>
       </div>
       <div class="post__author">
-        <p class="name">${author || "익명"}</p>
+        <p class="name">${author.nickname || "익명"}</p>
       </div>
     `;
 

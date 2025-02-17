@@ -1,6 +1,8 @@
 :root {
+  --color-base: #f4f5f7;
   --color-violet: #7f6aee;
   --color-light-violet: #aca0eb;
+  --color-gray: #d9d9d9;
 }
 
 * {
@@ -10,6 +12,7 @@
 body {
   width: 100vw;
   height: 100vh;
+  background-color: var(--color-base);
 }
 
 a {

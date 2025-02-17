@@ -101,6 +101,8 @@ form.addEventListener("submit", (e) => {
   const content = formData.get("content").trim();
 
   createPost({
+    id: crypto.randomUUID(),
+    author: getCurrentUser().nickname,
     title,
     content,
     image: postImage || null,

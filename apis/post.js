@@ -18,6 +18,17 @@ export const createPost = (postData) => {
   );
 };
 
+export const updatePost = (postData) => {
+  const posts = JSON.parse(localStorage.getItem("posts")) || [];
+
+  localStorage.setItem(
+    "posts",
+    JSON.stringify(
+      posts.map((post) => (post.id === postData.id ? postData : post))
+    )
+  );
+};
+
 export const getAllPosts = () => {
   return JSON.parse(localStorage.getItem("posts")) || [];
 };

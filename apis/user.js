@@ -27,3 +27,8 @@ export const confirmPassword = (email, password) => {
 
   return userData?.password === password;
 };
+
+export const logout = () => {
+  localStorage.removeItem("currentUser");
+  window.location.href = "/index.html";
+};

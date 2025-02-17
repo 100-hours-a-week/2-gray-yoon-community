@@ -1,0 +1,15 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 104px;
+  background-color: var(--color-base);
+  border-bottom: 1px solid #000;
+  z-index: 9999;
+}
+
+.navbar__title {
+  font-size: 32px;
+}

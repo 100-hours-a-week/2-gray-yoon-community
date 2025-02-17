@@ -151,7 +151,7 @@ form.addEventListener("submit", (e) => {
     email,
     password,
     nickname,
-    profileImg,
+    profileImg: profileImg || "/assets/default_profile.jpg",
   });
 
   alert("회원가입이 완료되었습니다.");

@@ -130,3 +130,22 @@ form.addEventListener("submit", (e) => {
 });
 
 updateSubmitBtnState();
+
+const profileMenu = document.querySelector(".profile-menu");
+const logoutBtn = document.querySelector(".logout-btn");
+
+// 메뉴 토글 기능
+profileBtn.addEventListener("click", () => {
+  profileMenu.classList.toggle("show");
+});
+
+// 메뉴 외부 클릭 시 닫기
+document.addEventListener("click", (e) => {
+  if (!profileBtn.contains(e.target) && !profileMenu.contains(e.target)) {
+    profileMenu.classList.remove("show");
+  }
+});
+
+logoutBtn.addEventListener("click", () => {
+  logout();
+});

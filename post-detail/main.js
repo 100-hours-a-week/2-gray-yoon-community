@@ -58,9 +58,13 @@ if (currentUserEmail === email) {
   `;
 }
 
-document.querySelector(".edit-btns .edit").addEventListener("click", () => {
-  window.location.href = `/post-edit/index.html?id=${postId}`;
-});
+const editBtn = document.querySelector(".edit-btns .edit");
+
+if (editBtn) {
+  editBtn.addEventListener("click", () => {
+    window.location.href = `/post-edit/index.html?id=${postId}`;
+  });
+}
 
 const postImage = document.querySelector(".post-image");
 if (image) {
@@ -178,4 +182,23 @@ confirmDelete.addEventListener("click", () => {
   deletePost(postId);
 
   window.location.href = "/post/index.html";
+});
+
+const profileMenu = document.querySelector(".profile-menu");
+const logoutBtn = document.querySelector(".logout-btn");
+
+// 메뉴 토글 기능
+profileBtn.addEventListener("click", () => {
+  profileMenu.classList.toggle("show");
+});
+
+// 메뉴 외부 클릭 시 닫기
+document.addEventListener("click", (e) => {
+  if (!profileBtn.contains(e.target) && !profileMenu.contains(e.target)) {
+    profileMenu.classList.remove("show");
+  }
+});
+
+logoutBtn.addEventListener("click", () => {
+  logout();
 });

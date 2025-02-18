@@ -1,5 +1,16 @@
-import { updatePassword } from "../apis/user.js";
+import { getCurrentUser, updatePassword } from "../apis/user.js";
 import { PASSWORD_REGEX } from "../constants/regex.js";
+
+const profileBtn = document.querySelector(".navbar__profile-btn");
+
+const profileImgSrc = getCurrentUser().profileImg;
+
+const imgEl = document.createElement("img");
+imgEl.classList.add("profile-img"); // 스타일 적용을 위해 클래스 추가
+imgEl.alt = "프로필 이미지";
+imgEl.src = profileImgSrc;
+
+profileBtn.appendChild(imgEl);
 
 const updatePasswordBtnState = () => {
   if (isNewPasswordValid && isConfirmPasswordValid) {
@@ -76,4 +87,23 @@ form.addEventListener("submit", (e) => {
 
   alert("비밀번호가 변경되었습니다.");
   window.location.href = "/";
+});
+
+const profileMenu = document.querySelector(".profile-menu");
+const logoutBtn = document.querySelector(".logout-btn");
+
+// 메뉴 토글 기능
+profileBtn.addEventListener("click", () => {
+  profileMenu.classList.toggle("show");
+});
+
+// 메뉴 외부 클릭 시 닫기
+document.addEventListener("click", (e) => {
+  if (!profileBtn.contains(e.target) && !profileMenu.contains(e.target)) {
+    profileMenu.classList.remove("show");
+  }
+});
+
+logoutBtn.addEventListener("click", () => {
+  logout();
 });

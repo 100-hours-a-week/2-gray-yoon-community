@@ -10,6 +10,237 @@
   z-index: 9999;
 }
 
+.navbar__content {
+  position: relative;
+}
+
 .navbar__title {
   font-size: 32px;
+}
+
+.navbar__profile-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -120px;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.navbar__profile-btn .profile-img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.profile-menu {
+  position: absolute;
+  top: 50px;
+  right: -120px;
+  width: 160px;
+  background: #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  display: none;
+  z-index: 5555;
+  overflow: hidden;
+}
+
+.profile-menu-list li a,
+.profile-menu-list li button {
+  display: block;
+  text-align: center;
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+}
+
+.profile-menu-list li:hover {
+  background: #ccc;
+}
+
+.profile-menu.show {
+  display: block;
+}
+
+/* 전체 레이아웃 */
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 26px;
+  margin: 0 auto;
+  padding: 80px 0;
+  max-width: 360px;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.content__title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* 프로필 업로드 영역 */
+.content__profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.profile-label {
+  align-self: self-start;
+  font-weight: 700;
+}
+
+.profile-upload {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-uploader {
+  cursor: pointer;
+}
+
+.profile-placeholder {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: var(--color-gray);
+  overflow: hidden;
+}
+
+.profile-placeholder .profile-change-text {
+  position: absolute;
+  font-size: 14px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  width: 100%;
+  text-align: center;
+  padding: 4px;
+}
+
+.profile-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content__form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.email-label {
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.edit-btn {
+  width: 100%;
+  height: 40px;
+  font-weight: 700;
+  color: #fff;
+  background-color: var(--color-light-violet);
+  border-radius: 6px;
+  cursor: not-allowed;
+}
+
+.edit-btn.enabled {
+  background-color: #7f6aee;
+  cursor: pointer;
+}
+
+/* 회원 탈퇴 버튼 */
+.withdraw-btn {
+  margin-top: 12px;
+}
+
+.toast-message {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #7f6aee;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.toast-message.show {
+  opacity: 1;
+}
+
+/* 모달 배경 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* 모달 박스 */
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  width: 360px;
+}
+
+/* 모달 타이틀 */
+.modal-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* 모달 텍스트 */
+.modal-text {
+  font-size: 14px;
+  color: gray;
+  margin-bottom: 16px;
+}
+
+/* 버튼 컨테이너 */
+.modal-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* 취소 버튼 */
+.modal-cancel {
+  background: black;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* 확인 버튼 */
+.modal-confirm {
+  background: #aca0eb;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
 }

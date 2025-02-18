@@ -5,6 +5,11 @@ import {
   signup,
 } from "../apis/user.js";
 import {
+  EMAIL_ERROR_MESSAGE,
+  NICKNAME_ERROR_MESSAGE,
+  PASSWORD_ERROR_MESSAGE,
+} from "../constants/message.js";
+import {
   EMAIL_REGEX,
   NICKNAME_REGEX,
   PASSWORD_REGEX,
@@ -35,10 +40,10 @@ emailInput.addEventListener("input", (e) => {
   const value = e.target.value.trim();
 
   if (value === "") {
-    emailHelperText.textContent = "이메일을 입력해주세요.";
+    emailHelperText.textContent = EMAIL_ERROR_MESSAGE.REQUIRED;
     isEmailValid = false;
   } else if (!EMAIL_REGEX.test(value)) {
-    emailHelperText.textContent = "올바른 이메일 주소 형식을 입력해주세요.";
+    emailHelperText.textContent = EMAIL_ERROR_MESSAGE.VALIDATION;
     isEmailValid = false;
   } else {
     emailHelperText.textContent = "";
@@ -60,11 +65,10 @@ passwordInput.addEventListener("input", (e) => {
   password = value;
 
   if (value === "") {
-    passwordHelperText.textContent = "비밀번호를 입력해주세요.";
+    passwordHelperText.textContent = PASSWORD_ERROR_MESSAGE.REQUIRED;
     isPasswordValid = false;
   } else if (!PASSWORD_REGEX.test(value)) {
-    passwordHelperText.textContent =
-      "비밀번호는 8자 이상, 20자 이하이며, 대소문자, 숫자, 특수문자를 각각 최소 1개 포함해야 합니다.";
+    passwordHelperText.textContent = PASSWORD_ERROR_MESSAGE.VALIDATION;
     isPasswordValid = false;
   } else {
     passwordHelperText.textContent = "";
@@ -88,10 +92,11 @@ confirmpasswordInput.addEventListener("input", (e) => {
   confirmPassword = value;
 
   if (value === "") {
-    confirmpasswordHelperText.textContent = "비밀번호를 한번더 입력해주세요.";
+    confirmpasswordHelperText.textContent =
+      PASSWORD_ERROR_MESSAGE.CONFIRM_REQUIRED;
     isConfirmPasswordValid = false;
   } else if (password !== confirmPassword) {
-    confirmpasswordHelperText.textContent = "비밀번호가 다릅니다.";
+    confirmpasswordHelperText.textContent = PASSWORD_ERROR_MESSAGE.CONFIRM_DIFF;
     isConfirmPasswordValid = false;
   } else {
     confirmpasswordHelperText.textContent = "";
@@ -111,10 +116,10 @@ nicknameInput.addEventListener("input", (e) => {
   const value = e.target.value.trim();
 
   if (value === "") {
-    nicknameHelperText.textContent = "닉네임을 입력해주세요.";
+    nicknameHelperText.textContent = NICKNAME_ERROR_MESSAGE.REQUIRED;
     isNicknameValid = false;
   } else if (!NICKNAME_REGEX.test(value)) {
-    nicknameHelperText.textContent = "10글자 이내로 입력해주세요.(띄어쓰기 X)";
+    nicknameHelperText.textContent = NICKNAME_ERROR_MESSAGE.VALIDATION;
     isNicknameValid = false;
   } else {
     nicknameHelperText.textContent = "";
@@ -138,7 +143,7 @@ form.addEventListener("submit", (e) => {
   const nickname = formData.get("nickname").trim();
 
   if (checkEmailDuplication(email)) {
-    emailHelperText.textContent = "중복된 이메일입니다.";
+    emailHelperText.textContent = EMAIL_ERROR_MESSAGE.DUPLICATION;
     isEmailValid = false;
     emailInput.focus();
     updateSignupBtnState();
@@ -146,7 +151,7 @@ form.addEventListener("submit", (e) => {
   }
 
   if (checkNicknameDuplication(nickname)) {
-    nicknameHelperText.textContent = "중복된 닉네임입니다.";
+    nicknameHelperText.textContent = NICKNAME_ERROR_MESSAGE.DUPLICATION;
     isNicknameValid = false;
     nicknameInput.focus();
     updateSignupBtnState();

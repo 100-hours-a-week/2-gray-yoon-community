@@ -7,7 +7,7 @@ const profileBtn = document.querySelector(".navbar__profile-btn");
 const profileImgSrc = getCurrentUser().profileImg;
 
 const imgEl = document.createElement("img");
-imgEl.classList.add("profile-img"); // 스타일 적용을 위해 클래스 추가
+imgEl.classList.add("profile-img");
 imgEl.alt = "프로필 이미지";
 imgEl.src = profileImgSrc;
 
@@ -57,12 +57,10 @@ renderPosts(allPosts);
 const profileMenu = document.querySelector(".profile-menu");
 const logoutBtn = document.querySelector(".logout-btn");
 
-// 메뉴 토글 기능
 profileBtn.addEventListener("click", () => {
   profileMenu.classList.toggle("show");
 });
 
-// 메뉴 외부 클릭 시 닫기
 document.addEventListener("click", (e) => {
   if (!profileBtn.contains(e.target) && !profileMenu.contains(e.target)) {
     profileMenu.classList.remove("show");

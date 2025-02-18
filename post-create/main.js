@@ -1,5 +1,6 @@
 import { createPost } from "../apis/post.js";
 import { getCurrentUser, logout } from "../apis/user.js";
+import { POST_ERROR_MESSAGE } from "../constants/message.js";
 
 const profileBtn = document.querySelector(".navbar__profile-btn");
 
@@ -32,10 +33,10 @@ titleInput.addEventListener("input", (e) => {
   const value = e.target.value.trim();
 
   if (value === "") {
-    titleHelperText.textContent = "제목을 입력해주세요.";
+    titleHelperText.textContent = POST_ERROR_MESSAGE.TITLE_REQUIRED;
     isTitleValid = false;
   } else if (value.length > 26) {
-    titleHelperText.textContent = "제목은 최대 26자까지 작성할 수 있습니다.";
+    titleHelperText.textContent = POST_ERROR_MESSAGE.TITLE_LENGTH;
     isTitleValid = false;
   } else {
     titleHelperText.textContent = "";
@@ -55,7 +56,7 @@ contentInput.addEventListener("input", (e) => {
   const value = e.target.value.trim();
 
   if (value === "") {
-    contentHelperText.textContent = "내용을 입력해주세요.";
+    contentHelperText.textContent = POST_ERROR_MESSAGE.CONTENT_REQUIRED;
     isContentValid = false;
   } else {
     contentHelperText.textContent = "";
@@ -115,12 +116,10 @@ form.addEventListener("submit", (e) => {
 const profileMenu = document.querySelector(".profile-menu");
 const logoutBtn = document.querySelector(".logout-btn");
 
-// 메뉴 토글 기능
 profileBtn.addEventListener("click", () => {
   profileMenu.classList.toggle("show");
 });
 
-// 메뉴 외부 클릭 시 닫기
 document.addEventListener("click", (e) => {
   if (!profileBtn.contains(e.target) && !profileMenu.contains(e.target)) {
     profileMenu.classList.remove("show");

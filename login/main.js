@@ -1,4 +1,8 @@
 import { confirmPassword, getUserDataWithEmail } from "../apis/user.js";
+import {
+  EMAIL_ERROR_MESSAGE,
+  PASSWORD_ERROR_MESSAGE,
+} from "../constants/message.js";
 import { EMAIL_REGEX, PASSWORD_REGEX } from "../constants/regex.js";
 
 const updateLoginBtnState = () => {
@@ -21,10 +25,10 @@ emailInput.addEventListener("input", (e) => {
   const value = e.target.value.trim();
 
   if (value === "") {
-    emailHelperText.textContent = "이메일을 입력해주세요.";
+    emailHelperText.textContent = EMAIL_ERROR_MESSAGE.REQUIRED;
     isEmailValid = false;
   } else if (!EMAIL_REGEX.test(value)) {
-    emailHelperText.textContent = "올바른 이메일 주소 형식을 입력해주세요.";
+    emailHelperText.textContent = EMAIL_ERROR_MESSAGE.VALIDATION;
     isEmailValid = false;
   } else {
     emailHelperText.textContent = "";
@@ -44,11 +48,10 @@ passwordInput.addEventListener("input", (e) => {
   const value = e.target.value.trim();
 
   if (value === "") {
-    passwordHelperText.textContent = "비밀번호를 입력해주세요.";
+    passwordHelperText.textContent = PASSWORD_ERROR_MESSAGE.REQUIRED;
     isPasswordValid = false;
   } else if (!PASSWORD_REGEX.test(value)) {
-    passwordHelperText.textContent =
-      "비밀번호는 8자 이상, 20자 이하이며, 대소문자, 숫자, 특수문자를 각각 최소 1개 포함해야 합니다.";
+    passwordHelperText.textContent = PASSWORD_ERROR_MESSAGE.VALIDATION;
     isPasswordValid = false;
   } else {
     passwordHelperText.textContent = "";
@@ -72,7 +75,7 @@ form.addEventListener("submit", (e) => {
 
   if (!confirmPassword(email, password)) {
     passwordInput.focus();
-    passwordHelperText.textContent = "비밀번호를 확인해주세요.";
+    passwordHelperText.textContent = PASSWORD_ERROR_MESSAGE.WRONG;
     isPasswordValid = false;
     updateLoginBtnState();
     return;

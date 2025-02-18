@@ -1,4 +1,5 @@
 import { getCurrentUser, logout, updatePassword } from "../apis/user.js";
+import { PASSWORD_ERROR_MESSAGE } from "../constants/message.js";
 import { PASSWORD_REGEX } from "../constants/regex.js";
 
 const profileBtn = document.querySelector(".navbar__profile-btn");
@@ -6,7 +7,7 @@ const profileBtn = document.querySelector(".navbar__profile-btn");
 const profileImgSrc = getCurrentUser().profileImg;
 
 const imgEl = document.createElement("img");
-imgEl.classList.add("profile-img"); // 스타일 적용을 위해 클래스 추가
+imgEl.classList.add("profile-img");
 imgEl.alt = "프로필 이미지";
 imgEl.src = profileImgSrc;
 
@@ -34,11 +35,10 @@ newPasswordInput.addEventListener("change", (e) => {
   newPassword = value;
 
   if (value === "") {
-    newPasswordHelperText.textContent = "* 비밀번호를 입력하세요";
+    newPasswordHelperText.textContent = PASSWORD_ERROR_MESSAGE.REQUIRED;
     isNewPasswordValid = false;
   } else if (!PASSWORD_REGEX.test(value)) {
-    newPasswordHelperText.textContent =
-      "* 비밀번호는 8~20자, 대소문자/숫자/특수문자를 포함해야 합니다.";
+    newPasswordHelperText.textContent = PASSWORD_ERROR_MESSAGE.VALIDATION;
     isNewPasswordValid = false;
   } else {
     newPasswordHelperText.textContent = "";
@@ -60,10 +60,11 @@ confirmPasswordInput.addEventListener("change", (e) => {
   const value = e.target.value.trim();
 
   if (value === "") {
-    confirmPasswordHelperText.textContent = "* 비밀번호를 한번 더 입력하세요";
+    confirmPasswordHelperText.textContent =
+      PASSWORD_ERROR_MESSAGE.CONFIRM_REQUIRED;
     isConfirmPasswordValid = false;
   } else if (newPassword !== value) {
-    confirmPasswordHelperText.textContent = "* 비밀번호가 일치하지 않습니다.";
+    confirmPasswordHelperText.textContent = PASSWORD_ERROR_MESSAGE.CONFIRM_DIFF;
     isConfirmPasswordValid = false;
   } else {
     confirmPasswordHelperText.textContent = "";
@@ -92,12 +93,10 @@ form.addEventListener("submit", (e) => {
 const profileMenu = document.querySelector(".profile-menu");
 const logoutBtn = document.querySelector(".logout-btn");
 
-// 메뉴 토글 기능
 profileBtn.addEventListener("click", () => {
   profileMenu.classList.toggle("show");
 });
 
-// 메뉴 외부 클릭 시 닫기
 document.addEventListener("click", (e) => {
   if (!profileBtn.contains(e.target) && !profileMenu.contains(e.target)) {
     profileMenu.classList.remove("show");

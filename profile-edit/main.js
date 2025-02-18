@@ -1,4 +1,5 @@
 import { getCurrentUser, logout, updateUser, withdraw } from "../apis/user.js";
+import { NICKNAME_ERROR_MESSAGE } from "../constants/message.js";
 import { NICKNAME_REGEX } from "../constants/regex.js";
 
 const profileBtn = document.querySelector(".navbar__profile-btn");
@@ -66,10 +67,10 @@ nicknameInput.addEventListener("input", (e) => {
   const value = e.target.value.trim();
 
   if (value === "") {
-    nicknameHelperText.textContent = "닉네임을 입력해주세요.";
+    nicknameHelperText.textContent = NICKNAME_ERROR_MESSAGE.REQUIRED;
     isNicknameValid = false;
   } else if (!NICKNAME_REGEX.test(value)) {
-    nicknameHelperText.textContent = "닉네임은 최대 10자까지 가능합니다.";
+    nicknameHelperText.textContent = NICKNAME_ERROR_MESSAGE.VALIDATION;
     isNicknameValid = false;
   } else {
     nicknameHelperText.textContent = "";

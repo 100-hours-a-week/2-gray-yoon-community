@@ -1,21 +1,5 @@
-.navbar {
-  position: sticky;
-  top: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 104px;
-  background-color: var(--color-base);
-  border-bottom: 1px solid #000;
-  z-index: 9999;
-}
-
 .navbar__content {
   position: relative;
-}
-
-.navbar__title {
-  font-size: 32px;
 }
 
 .navbar__profile-btn {
@@ -23,21 +7,19 @@
   top: 50%;
   transform: translateY(-50%);
   right: -120px;
-  width: 40px;
-  height: 40px;
   border-radius: 100%;
   overflow: hidden;
 }
 
 .navbar__profile-btn .profile-img {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   object-fit: cover;
 }
 
 .profile-menu {
   position: absolute;
-  top: 50px;
+  top: 36px;
   right: -120px;
   width: 160px;
   background: #ddd;
@@ -65,7 +47,6 @@
   display: block;
 }
 
-/* 전체 레이아웃 */
 .content {
   display: flex;
   flex-direction: column;
@@ -74,7 +55,7 @@
   gap: 26px;
   margin: 0 auto;
   padding: 80px 0;
-  max-width: 360px;
+  max-width: 390px;
   width: 100%;
   overflow-y: auto;
 }
@@ -85,7 +66,6 @@
   margin-bottom: 20px;
 }
 
-/* 프로필 업로드 영역 */
 .content__profile {
   display: flex;
   flex-direction: column;
@@ -113,8 +93,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 120px;
-  height: 120px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   background-color: var(--color-gray);
   overflow: hidden;
@@ -160,11 +140,6 @@
 .edit-btn.enabled {
   background-color: #7f6aee;
   cursor: pointer;
-}
-
-/* 회원 탈퇴 버튼 */
-.withdraw-btn {
-  margin-top: 12px;
 }
 
 .toast-message {

@@ -1,29 +1,8 @@
-.navbar {
-  position: sticky;
-  top: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 104px;
-  background-color: var(--color-base);
-  border-bottom: 1px solid #000;
-  z-index: 9999;
-}
-
-.navbar__content {
-  position: relative;
-}
-
 .prev-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   left: -120px;
-  font-size: 20px;
-}
-
-.navbar__title {
-  font-size: 32px;
 }
 
 .navbar__profile-btn {
@@ -31,15 +10,13 @@
   top: 50%;
   transform: translateY(-50%);
   right: -120px;
-  width: 40px;
-  height: 40px;
   border-radius: 100%;
   overflow: hidden;
 }
 
 .navbar__profile-btn .profile-img {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   object-fit: cover;
 }
 
@@ -151,7 +128,6 @@ textarea.input-box__input {
   color: white;
   background-color: #aca0eb;
   border: none;
-  border-radius: 4px;
   cursor: not-allowed;
 }
 

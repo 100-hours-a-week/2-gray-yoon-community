@@ -1,4 +1,4 @@
-import { getCurrentUser, updatePassword } from "../apis/user.js";
+import { getCurrentUser, logout, updatePassword } from "../apis/user.js";
 import { PASSWORD_REGEX } from "../constants/regex.js";
 
 const profileBtn = document.querySelector(".navbar__profile-btn");

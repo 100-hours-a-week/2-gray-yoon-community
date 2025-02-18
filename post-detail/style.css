@@ -1,15 +1,3 @@
-.navbar {
-  position: sticky;
-  top: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 104px;
-  background-color: var(--color-base);
-  border-bottom: 1px solid #000;
-  z-index: 9999;
-}
-
 .navbar__content {
   position: relative;
 }
@@ -19,11 +7,6 @@
   top: 50%;
   transform: translateY(-50%);
   left: -120px;
-  font-size: 20px;
-}
-
-.navbar__title {
-  font-size: 32px;
 }
 
 .navbar__profile-btn {
@@ -31,21 +14,19 @@
   top: 50%;
   transform: translateY(-50%);
   right: -120px;
-  width: 40px;
-  height: 40px;
   border-radius: 100%;
   overflow: hidden;
 }
 
 .navbar__profile-btn .profile-img {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   object-fit: cover;
 }
 
 .profile-menu {
   position: absolute;
-  top: 50px;
+  top: 36px;
   right: -120px;
   width: 160px;
   background: #ddd;
@@ -107,7 +88,7 @@
 }
 
 .content__title {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
 }
 
@@ -124,8 +105,8 @@
 }
 
 .authorAndDate .author-profile {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   border-radius: 100%;
   object-fit: cover;
 }
@@ -169,11 +150,11 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
-  width: 120px;
+  width: 100px;
   height: 80px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
-  border-radius: 12px;
+  border-radius: 16px;
   background-color: var(--color-gray);
 }
 
@@ -194,9 +175,10 @@
 }
 
 .comment-input {
-  padding: 8px;
+  padding: 12px;
   height: 140px;
   outline: none;
+  border-radius: 8px;
   border-color: var(--color-gray);
 }
 
@@ -237,8 +219,8 @@
 }
 
 .author-profile {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background: #ddd;
   object-fit: cover;
@@ -259,7 +241,7 @@
 .authorAndDate {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 16px;
 }
 
 .author-nickname {

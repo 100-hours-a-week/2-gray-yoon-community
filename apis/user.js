@@ -31,13 +31,21 @@ export const updateCurrentUserPassword = (password) => {
 };
 
 export const signup = (data) => {
-  const users = getAllUsers();
+  const users = getAllUsers() || [];
 
-  if (users) {
-    localStorage.setItem("users", JSON.stringify([...users, data]));
-  } else {
-    localStorage.setItem("users", JSON.stringify([data]));
-  }
+  localStorage.setItem("users", JSON.stringify([...users, data]));
+};
+
+export const checkEmailDuplication = (email) => {
+  const users = getAllUsers() || [];
+
+  return !!users.find((user) => user.email === email);
+};
+
+export const checkNicknameDuplication = (nickname) => {
+  const users = getAllUsers() || [];
+
+  return !!users.find((user) => user.nickname === nickname);
 };
 
 export const confirmPassword = (email, password) => {

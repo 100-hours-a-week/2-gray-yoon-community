@@ -1,4 +1,4 @@
-import { getCurrentUser, updateUser, withdraw } from "../apis/user.js";
+import { getCurrentUser, logout, updateUser, withdraw } from "../apis/user.js";
 import { NICKNAME_REGEX } from "../constants/regex.js";
 
 const profileBtn = document.querySelector(".navbar__profile-btn");
@@ -56,7 +56,6 @@ profileUploader.addEventListener("change", (e) => {
   }
 });
 
-// 닉네임 입력 및 유효성 검사
 let isNicknameValid = true;
 const nicknameInput = document.querySelector("#nickname");
 const nicknameHelperText = document.querySelector(
@@ -80,7 +79,6 @@ nicknameInput.addEventListener("input", (e) => {
   updateButtonState();
 });
 
-// 버튼 활성화 상태 업데이트
 const updateButtonState = () => {
   if (isNicknameValid) {
     editBtn.classList.add("enabled");
@@ -91,7 +89,6 @@ const updateButtonState = () => {
   }
 };
 
-// 수정하기 버튼 클릭 시
 const editBtn = document.querySelector(".edit-btn");
 editBtn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -109,32 +106,27 @@ editBtn.addEventListener("click", (e) => {
   showToastMessage();
 });
 
-// 수정 완료 토스트 메시지 표시
 const showToastMessage = () => {
   const toast = document.querySelector(".toast-message");
   toast.classList.add("show");
   setTimeout(() => toast.classList.remove("show"), 2000);
 };
 
-// 모달 요소 가져오기
 const withdrawModal = document.getElementById("withdraw-modal");
 const cancelBtn = document.querySelector(".modal-cancel");
 const confirmBtn = document.querySelector(".modal-confirm");
 
-// 회원 탈퇴 버튼 클릭 시 모달 표시
 const withdrawBtn = document.querySelector(".withdraw-btn");
 withdrawBtn.addEventListener("click", () => {
   withdrawModal.classList.remove("hidden");
 });
 
-// 취소 버튼 클릭 시 모달 닫기
 cancelBtn.addEventListener("click", () => {
   withdrawModal.classList.add("hidden");
 });
 
-// 확인 버튼 클릭 시 회원 탈퇴 처리 후 로그인 페이지로 이동
 confirmBtn.addEventListener("click", () => {
-  withdraw(); // 회원탈퇴 API 호출
+  withdraw();
   alert("회원 탈퇴가 완료되었습니다.");
   window.location.href = "/index.html";
 });

@@ -17,7 +17,7 @@ let isEmailValid = false;
 const emailInput = document.querySelector(".input-box__input.email");
 const emailHelperText = document.querySelector(".input-box__helper-text.email");
 
-emailInput.addEventListener("change", (e) => {
+emailInput.addEventListener("input", (e) => {
   const value = e.target.value.trim();
 
   if (value === "") {
@@ -40,7 +40,7 @@ const passwordHelperText = document.querySelector(
   ".input-box__helper-text.password"
 );
 
-passwordInput.addEventListener("change", (e) => {
+passwordInput.addEventListener("input", (e) => {
   const value = e.target.value.trim();
 
   if (value === "") {

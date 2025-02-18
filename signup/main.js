@@ -1,4 +1,9 @@
-import { getAllUsers, signup } from "../apis/user.js";
+import {
+  checkEmailDuplication,
+  checkNicknameDuplication,
+  getAllUsers,
+  signup,
+} from "../apis/user.js";
 import {
   EMAIL_REGEX,
   NICKNAME_REGEX,
@@ -22,23 +27,11 @@ const updateSignupBtnState = () => {
   }
 };
 
-const checkEmailDuplication = (value) => {
-  const users = getAllUsers();
-
-  if (!users) return true;
-
-  for (const user of users) {
-    if (user.email === value) return false;
-  }
-
-  return true;
-};
-
 let isEmailValid = false;
 const emailInput = document.querySelector(".input-box__input.email");
 const emailHelperText = document.querySelector(".input-box__helper-text.email");
 
-emailInput.addEventListener("change", (e) => {
+emailInput.addEventListener("input", (e) => {
   const value = e.target.value.trim();
 
   if (value === "") {
@@ -46,9 +39,6 @@ emailInput.addEventListener("change", (e) => {
     isEmailValid = false;
   } else if (!EMAIL_REGEX.test(value)) {
     emailHelperText.textContent = "올바른 이메일 주소 형식을 입력해주세요.";
-    isEmailValid = false;
-  } else if (!checkEmailDuplication(value)) {
-    emailHelperText.textContent = "중복된 이메일입니다.";
     isEmailValid = false;
   } else {
     emailHelperText.textContent = "";
@@ -65,7 +55,7 @@ const passwordHelperText = document.querySelector(
   ".input-box__helper-text.password"
 );
 
-passwordInput.addEventListener("change", (e) => {
+passwordInput.addEventListener("input", (e) => {
   const value = e.target.value.trim();
   password = value;
 
@@ -93,7 +83,7 @@ const confirmpasswordHelperText = document.querySelector(
   ".input-box__helper-text.confirm-password"
 );
 
-confirmpasswordInput.addEventListener("change", (e) => {
+confirmpasswordInput.addEventListener("input", (e) => {
   const value = e.target.value.trim();
   confirmPassword = value;
 
@@ -117,7 +107,7 @@ const nicknameHelperText = document.querySelector(
   ".input-box__helper-text.nickname"
 );
 
-nicknameInput.addEventListener("change", (e) => {
+nicknameInput.addEventListener("input", (e) => {
   const value = e.target.value.trim();
 
   if (value === "") {
@@ -146,6 +136,22 @@ form.addEventListener("submit", (e) => {
   const email = formData.get("email").trim();
   const password = formData.get("password").trim();
   const nickname = formData.get("nickname").trim();
+
+  if (checkEmailDuplication(email)) {
+    emailHelperText.textContent = "중복된 이메일입니다.";
+    isEmailValid = false;
+    emailInput.focus();
+    updateSignupBtnState();
+    return;
+  }
+
+  if (checkNicknameDuplication(nickname)) {
+    nicknameHelperText.textContent = "중복된 닉네임입니다.";
+    isNicknameValid = false;
+    nicknameInput.focus();
+    updateSignupBtnState();
+    return;
+  }
 
   signup({
     email,

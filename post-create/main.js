@@ -1,5 +1,5 @@
 import { createPost } from "../apis/post.js";
-import { getCurrentUser } from "../apis/user.js";
+import { getCurrentUser, logout } from "../apis/user.js";
 
 const profileBtn = document.querySelector(".navbar__profile-btn");
 

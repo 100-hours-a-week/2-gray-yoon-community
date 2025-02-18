@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 104px;
+  height: 80px;
   background-color: var(--color-base);
   border-bottom: 1px solid #000;
   z-index: 9999;
@@ -19,11 +19,10 @@
   top: 50%;
   transform: translateY(-50%);
   left: -120px;
-  font-size: 20px;
 }
 
 .navbar__title {
-  font-size: 32px;
+  font-size: 24px;
 }
 
 .content {
@@ -36,7 +35,7 @@
 }
 
 .content__title {
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 700;
   line-height: 38px;
 }
@@ -98,8 +97,8 @@
 
 .signup-btn {
   margin-bottom: 20px;
-  width: 360px;
-  height: 36px;
+  width: 390px;
+  height: 40px;
   font-weight: 700;
   color: #fff;
   background-color: var(--color-light-violet);

@@ -4,7 +4,7 @@ import {
   getPostWithId,
   toggleLikes,
 } from "../apis/post.js";
-import { getCurrentUser } from "../apis/user.js";
+import { getCurrentUser, logout } from "../apis/user.js";
 import { formatTimestamp } from "../utils/format.js";
 
 const profileBtn = document.querySelector(".navbar__profile-btn");
@@ -113,6 +113,11 @@ const renderComments = () => {
 renderComments();
 
 const likeBtn = document.querySelector(".like-btn.metadata-box");
+if (likeEmails.includes(currentUserEmail)) {
+  likeBtn.style.backgroundColor = "#7f6aee";
+  likeBtn.style.color = "#fff";
+}
+
 likeBtn.addEventListener("click", () => {
   toggleLikes(postId, currentUserEmail);
   if (likeEmails.includes(currentUserEmail)) {
@@ -187,12 +192,10 @@ confirmDelete.addEventListener("click", () => {
 const profileMenu = document.querySelector(".profile-menu");
 const logoutBtn = document.querySelector(".logout-btn");
 
-// 메뉴 토글 기능
 profileBtn.addEventListener("click", () => {
   profileMenu.classList.toggle("show");
 });
 
-// 메뉴 외부 클릭 시 닫기
 document.addEventListener("click", (e) => {
   if (!profileBtn.contains(e.target) && !profileMenu.contains(e.target)) {
     profileMenu.classList.remove("show");

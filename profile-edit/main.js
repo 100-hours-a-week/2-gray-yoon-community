@@ -1,17 +1,9 @@
 import { getCurrentUser, logout, updateUser, withdraw } from "../apis/user.js";
 import { NICKNAME_ERROR_MESSAGE } from "../constants/message.js";
 import { NICKNAME_REGEX } from "../constants/regex.js";
+import "../components/Header.js";
 
 const profileBtn = document.querySelector(".navbar__profile-btn");
-
-const profileImgSrc = getCurrentUser().profileImg;
-
-const imgEl = document.createElement("img");
-imgEl.classList.add("profile-img");
-imgEl.alt = "프로필 이미지";
-imgEl.src = profileImgSrc;
-
-profileBtn.appendChild(imgEl);
 
 const profileMenu = document.querySelector(".profile-menu");
 const logoutBtn = document.querySelector(".logout-btn");

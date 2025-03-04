@@ -1,17 +1,9 @@
 import { createPost } from "../apis/post.js";
 import { getCurrentUser, logout } from "../apis/user.js";
 import { POST_ERROR_MESSAGE } from "../constants/message.js";
+import "../components/Header.js";
 
 const profileBtn = document.querySelector(".navbar__profile-btn");
-
-const profileImgSrc = getCurrentUser().profileImg;
-
-const imgEl = document.createElement("img");
-imgEl.classList.add("profile-img");
-imgEl.alt = "프로필 이미지";
-imgEl.src = profileImgSrc;
-
-profileBtn.appendChild(imgEl);
 
 const updateSubmitBtnState = () => {
   if (isTitleValid && isContentValid) {

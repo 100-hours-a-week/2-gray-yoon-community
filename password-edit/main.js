@@ -1,17 +1,18 @@
 import { getCurrentUser, logout, updatePassword } from "../apis/user.js";
 import { PASSWORD_ERROR_MESSAGE } from "../constants/message.js";
 import { PASSWORD_REGEX } from "../constants/regex.js";
+import "../components/Header.js";
 
 const profileBtn = document.querySelector(".navbar__profile-btn");
 
-const profileImgSrc = getCurrentUser().profileImg;
+// const profileImgSrc = getCurrentUser().profileImg;
 
-const imgEl = document.createElement("img");
-imgEl.classList.add("profile-img");
-imgEl.alt = "프로필 이미지";
-imgEl.src = profileImgSrc;
+// const imgEl = document.createElement("img");
+// imgEl.classList.add("profile-img");
+// imgEl.alt = "프로필 이미지";
+// imgEl.src = profileImgSrc;
 
-profileBtn.appendChild(imgEl);
+// profileBtn.appendChild(imgEl);
 
 const updatePasswordBtnState = () => {
   if (isNewPasswordValid && isConfirmPasswordValid) {

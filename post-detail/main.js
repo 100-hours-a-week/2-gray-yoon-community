@@ -1,3 +1,5 @@
+import "../components/Header.js";
+
 import {
   addComment,
   deletePost,
@@ -14,13 +16,6 @@ const {
   email: currentUserEmail,
   nickname: currentUserNickname,
 } = getCurrentUser();
-
-const imgEl = document.createElement("img");
-imgEl.classList.add("profile-img");
-imgEl.alt = "프로필 이미지";
-imgEl.src = profileImgSrc;
-
-profileBtn.appendChild(imgEl);
 
 const params = new URLSearchParams(window.location.search);
 const postId = params.get("id");
@@ -173,7 +168,7 @@ const deleteModal = document.getElementById("delete-modal");
 const confirmDelete = document.getElementById("confirm-delete");
 const cancelDelete = document.getElementById("cancel-delete");
 
-deleteBtn.addEventListener("click", () => {
+deleteBtn?.addEventListener("click", () => {
   deleteModal.classList.add("show");
   document.body.style.overflow = "hidden";
 });

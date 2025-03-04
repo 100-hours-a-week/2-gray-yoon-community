@@ -4,6 +4,7 @@ import {
   PASSWORD_ERROR_MESSAGE,
 } from "../constants/message.js";
 import { EMAIL_REGEX, PASSWORD_REGEX } from "../constants/regex.js";
+import "../components/Header.js";
 
 const updateLoginBtnState = () => {
   if (isEmailValid && isPasswordValid) {

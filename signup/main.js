@@ -14,6 +14,7 @@ import {
   NICKNAME_REGEX,
   PASSWORD_REGEX,
 } from "../constants/regex.js";
+import "../components/Header.js";
 
 const updateSignupBtnState = () => {
   if (

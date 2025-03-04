@@ -1,0 +1,70 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  background-color: var(--color-base);
+  border-bottom: 1px solid #000;
+  z-index: 9999;
+}
+
+.navbar__content {
+  position: relative;
+}
+
+.navbar__title {
+  font-size: 24px;
+}
+
+.prev-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -120px;
+}
+
+.navbar__profile-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -120px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.navbar__profile-btn .profile-img {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+}
+
+.profile-menu {
+  position: absolute;
+  top: 36px;
+  right: -120px;
+  width: 160px;
+  background: #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 5555;
+  overflow: hidden;
+}
+
+.profile-menu.hidden {
+  display: none;
+}
+
+.profile-menu-list li a,
+.profile-menu-list li button {
+  display: block;
+  text-align: center;
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+}
+
+.profile-menu-list li:hover {
+  background: #ccc;
+}

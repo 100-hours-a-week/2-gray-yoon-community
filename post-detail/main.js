@@ -18,7 +18,7 @@ const {
 const params = new URLSearchParams(window.location.search);
 const postId = params.get("id");
 
-const post = getPostWithId(postId);
+const post = await getPostWithId(postId);
 
 if (!post) {
   window.location.href = "/post/index.html";
@@ -28,7 +28,7 @@ if (!post) {
 const {
   title,
   author: { email, nickname, profileImg },
-  date,
+  createdAt,
   image,
   content,
   likes,
@@ -40,7 +40,7 @@ document.querySelector(".content__title").innerText = title;
 document.querySelector(".author-profile").src =
   profileImg || "default-profile.png";
 document.querySelector(".author-nickname").innerText = nickname;
-document.querySelector(".post-date").innerText = formatTimestamp(date);
+document.querySelector(".post-date").innerText = formatTimestamp(createdAt);
 
 const editBtns = document.querySelector(".edit-btns");
 

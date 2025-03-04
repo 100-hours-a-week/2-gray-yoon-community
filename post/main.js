@@ -4,9 +4,9 @@ import "../components/Header.js";
 
 const postsUl = document.querySelector(".content__posts");
 
-const allPosts = getAllPosts();
+const renderPosts = async () => {
+  const posts = await getAllPosts();
 
-const renderPosts = (posts) => {
   postsUl.innerHTML = "";
 
   // DocumentFragment 생성
@@ -16,7 +16,7 @@ const renderPosts = (posts) => {
     const postLi = document.createElement("li");
     postLi.classList.add("post");
 
-    const { id, title, likes, comments, views, date, author } = post;
+    const { id, title, likes, comments, views, createdAt, author } = post;
 
     postLi.addEventListener("click", () => {
       window.location.href = `/post-detail/index.html?id=${id}`;
@@ -32,7 +32,7 @@ const renderPosts = (posts) => {
             <p class="comments">댓글 ${comments.length}</p>
             <p class="views">조회수 ${views}</p>
           </div>
-          <p class="date">${formatTimestamp(date)}</p>
+          <p class="date">${formatTimestamp(createdAt)}</p>
         </div>
       </div>
       <div class="post__author">
@@ -48,4 +48,4 @@ const renderPosts = (posts) => {
   postsUl.appendChild(fragment);
 };
 
-renderPosts(allPosts);
+renderPosts();

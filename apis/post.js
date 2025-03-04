@@ -1,3 +1,4 @@
+import { apiRequest } from "./apiRequest.js";
 import { getCurrentUser } from "./user.js";
 
 export const createPost = (postData) => {
@@ -17,6 +18,13 @@ export const createPost = (postData) => {
     ])
   );
 };
+// export const createPost = async (postData) => {
+//   const data = await apiRequest("/posts", "POST", {
+//     data: postData,
+//   });
+
+//   return data;
+// };
 
 export const updatePost = (postData) => {
   const posts = JSON.parse(localStorage.getItem("posts")) || [];
@@ -28,18 +36,35 @@ export const updatePost = (postData) => {
     )
   );
 };
+// export const updatePost = async (postData) => {
+//   const data = await apiRequest(`/posts/${postData.id}`, "PATCH", {
+//     data: postData,
+//   });
 
-export const getAllPosts = () => {
-  return JSON.parse(localStorage.getItem("posts")) || [];
+//   return data;
+// };
+
+// export const getAllPosts = () => {
+//   return JSON.parse(localStorage.getItem("posts")) || [];
+// };
+export const getAllPosts = async () => {
+  const data = await apiRequest("/posts.json");
+
+  return data.data.posts;
 };
 
-export const getPostWithId = (id) => {
-  const posts = getAllPosts();
+// export const getPostWithId = (id) => {
+//   const posts = getAllPosts();
+//   return posts.find((post) => post.id === id);
+// };
+export const getPostWithId = async (id) => {
+  const posts = await getAllPosts();
+
   return posts.find((post) => post.id === id);
 };
 
-export const addComment = (id, content) => {
-  const posts = getAllPosts();
+export const addComment = async (id, content) => {
+  const posts = await getAllPosts();
 
   localStorage.setItem(
     "posts",
@@ -62,6 +87,15 @@ export const addComment = (id, content) => {
     )
   );
 };
+// export const addComment = async (id, content) => {
+//   const data = await apiRequest(`/posts/${id}/comments`, "POST", {
+//     data: {
+//       content,
+//     },
+//   });
+
+//   return data;
+// };
 
 export const addView = (id) => {
   const posts = getAllPosts();
@@ -100,6 +134,11 @@ export const toggleLikes = (postId, email) => {
     )
   );
 };
+// export const toggleLikes = async (postId) => {
+//   const data = await apiRequest(`/posts/${postId}/likes`, "PATCH");
+
+//   return data;
+// };
 
 export const deletePost = (id) => {
   const posts = getAllPosts();
@@ -109,3 +148,8 @@ export const deletePost = (id) => {
     JSON.stringify(posts.filter((post) => post.id !== id))
   );
 };
+// export const deletePost = async (id) => {
+//   const data = await apiRequest(`/posts/${id}`, "DELETE");
+
+//   return data;
+// };

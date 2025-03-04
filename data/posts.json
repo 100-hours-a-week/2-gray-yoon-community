@@ -1,0 +1,75 @@
+{
+  "message": "Posts fetched successfully",
+  "data": {
+    "posts": [
+      {
+        "id": "b02c3317-f814-417a-a614-ba803becd7a7",
+        "title": "첫 번째 글",
+        "likes": ["email@email.email"],
+        "comments": [
+          {
+            "date": 1739877077900,
+            "content": "1빠",
+            "author": {
+              "email": "email@email.email",
+              "nickname": "익명",
+              "profileImg": "https://images.unsplash.com/photo-1733044271325-3017e877218b?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            }
+          },
+          {
+            "date": 1739877077900,
+            "content": "2빠",
+            "author": {
+              "email": "email@email.email",
+              "nickname": "익명",
+              "profileImg": "https://images.unsplash.com/photo-1733044271325-3017e877218b?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            }
+          }
+        ],
+        "views": 100,
+        "createdAt": 1739877055564,
+        "content": "커뮤니티 과제... HTML, CSS, JavaScript 상당하다.",
+        "author": {
+          "email": "email@email.email",
+          "nickname": "익명",
+          "profileImg": "https://images.unsplash.com/photo-1733044271325-3017e877218b?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        }
+      },
+      {
+        "id": "055622b4-a7b9-488d-a336-e9b946a80dcd",
+        "title": "두 번째 글",
+        "likes": ["email@email.email"],
+        "comments": [
+          {
+            "date": 1739877077900,
+            "content": "1빠",
+            "author": {
+              "email": "email@email.email",
+              "nickname": "익명",
+              "profileImg": "https://images.unsplash.com/photo-1733044271325-3017e877218b?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            }
+          },
+          {
+            "date": 1739877077900,
+            "content": "2빠",
+            "author": {
+              "email": "email@email.email",
+              "nickname": "익명",
+              "profileImg": "https://images.unsplash.com/photo-1733044271325-3017e877218b?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            }
+          }
+        ],
+        "views": 200,
+        "createdAt": 1739877055564,
+        "content": "살려주세요.",
+        "author": {
+          "email": "email@email.email",
+          "nickname": "익명",
+          "profileImg": "https://images.unsplash.com/photo-1733044271325-3017e877218b?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        }
+      }
+    ],
+    "nextCursor": 2,
+    "hasNext": true
+  }
+}

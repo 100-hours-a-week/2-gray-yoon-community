@@ -9,7 +9,6 @@ const renderPosts = async () => {
 
   postsUl.innerHTML = "";
 
-  // DocumentFragment 생성
   const fragment = document.createDocumentFragment();
 
   posts.forEach((post) => {
@@ -40,11 +39,9 @@ const renderPosts = async () => {
       </div>
     `;
 
-    // fragment에 추가
     fragment.appendChild(postLi);
   });
 
-  // 한 번에 DOM에 추가
   postsUl.appendChild(fragment);
 };
 

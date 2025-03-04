@@ -110,7 +110,6 @@
   opacity: 1;
 }
 
-/* 모달 배경 */
 .modal {
   position: fixed;
   top: 0;
@@ -124,7 +123,6 @@
   z-index: 1000;
 }
 
-/* 모달 박스 */
 .modal-content {
   background: white;
   padding: 20px;
@@ -133,27 +131,23 @@
   width: 360px;
 }
 
-/* 모달 타이틀 */
 .modal-title {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-/* 모달 텍스트 */
 .modal-text {
   font-size: 14px;
   color: gray;
   margin-bottom: 16px;
 }
 
-/* 버튼 컨테이너 */
 .modal-buttons {
   display: flex;
   justify-content: space-around;
 }
 
-/* 취소 버튼 */
 .modal-cancel {
   background: black;
   color: white;
@@ -162,7 +156,6 @@
   cursor: pointer;
 }
 
-/* 확인 버튼 */
 .modal-confirm {
   background: #aca0eb;
   color: white;

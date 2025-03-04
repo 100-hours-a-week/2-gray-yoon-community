@@ -1,4 +1,3 @@
-// Header 컴포넌트 클래스
 class Header extends HTMLElement {
   constructor() {
     super();
@@ -11,11 +10,9 @@ class Header extends HTMLElement {
   // CSS 로드 메서드 추가
   async loadStyles() {
     try {
-      // 현재 스크립트의 위치를 기준으로 CSS 파일의 경로를 설정
       const response = await fetch("/components/Header.css");
       const css = await response.text();
 
-      // style 태그 생성 및 추가
       const style = document.createElement("style");
       style.textContent = css;
       document.head.appendChild(style);
@@ -135,7 +132,6 @@ class Header extends HTMLElement {
 // 컴포넌트 등록
 customElements.define("app-header", Header);
 
-// getCurrentUser와 logout 함수 import
 import { getCurrentUser, logout } from "../apis/user.js";
 
 export default Header;

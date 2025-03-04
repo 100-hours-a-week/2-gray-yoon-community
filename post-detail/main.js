@@ -82,6 +82,8 @@ const renderComments = () => {
   commentList.innerHTML = "";
   commentCount.innerText = comments.length;
 
+  const fragment = document.createDocumentFragment();
+
   comments.forEach(({ author: { nickname, profileImg }, date, content }) => {
     const commentItem = document.createElement("li");
     commentItem.classList.add("comment-item");
@@ -99,8 +101,10 @@ const renderComments = () => {
         </div>
       </div>
     `;
-    commentList.appendChild(commentItem);
+    fragment.appendChild(commentItem);
   });
+
+  commentList.appendChild(fragment);
 };
 
 renderComments();
@@ -142,6 +146,8 @@ commentForm.addEventListener("submit", (e) => {
 
   commentInput.value = "";
 
+  const fragment = document.createDocumentFragment();
+
   const commentItem = document.createElement("li");
   commentItem.classList.add("comment-item");
   commentItem.innerHTML = `
@@ -156,7 +162,10 @@ commentForm.addEventListener("submit", (e) => {
         </div>
       </div>
     `;
-  commentList.appendChild(commentItem);
+
+  fragment.appendChild(commentItem);
+
+  commentList.appendChild(fragment);
 
   commentCount.innerText = commentCountState;
 });

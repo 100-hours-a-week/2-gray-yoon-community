@@ -9,6 +9,9 @@ const allPosts = getAllPosts();
 const renderPosts = (posts) => {
   postsUl.innerHTML = "";
 
+  // DocumentFragment 생성
+  const fragment = document.createDocumentFragment();
+
   posts.forEach((post) => {
     const postLi = document.createElement("li");
     postLi.classList.add("post");
@@ -37,8 +40,12 @@ const renderPosts = (posts) => {
       </div>
     `;
 
-    postsUl.appendChild(postLi);
+    // fragment에 추가
+    fragment.appendChild(postLi);
   });
+
+  // 한 번에 DOM에 추가
+  postsUl.appendChild(fragment);
 };
 
 renderPosts(allPosts);

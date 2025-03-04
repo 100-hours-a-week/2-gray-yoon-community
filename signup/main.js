@@ -1,7 +1,6 @@
 import {
   checkEmailDuplication,
   checkNicknameDuplication,
-  getAllUsers,
   signup,
 } from "../apis/user.js";
 import {

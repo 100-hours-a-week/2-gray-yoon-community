@@ -1,9 +1,7 @@
 import { createPost } from "../apis/post.js";
-import { getCurrentUser, logout } from "../apis/user.js";
+import { getCurrentUser } from "../apis/user.js";
 import { POST_ERROR_MESSAGE } from "../constants/message.js";
 import "../components/Header.js";
-
-const profileBtn = document.querySelector(".navbar__profile-btn");
 
 const updateSubmitBtnState = () => {
   if (isTitleValid && isContentValid) {
@@ -103,21 +101,4 @@ form.addEventListener("submit", (e) => {
 
   alert("게시글이 등록되었습니다.");
   window.location.href = "/post/index.html";
-});
-
-const profileMenu = document.querySelector(".profile-menu");
-const logoutBtn = document.querySelector(".logout-btn");
-
-profileBtn.addEventListener("click", () => {
-  profileMenu.classList.toggle("show");
-});
-
-document.addEventListener("click", (e) => {
-  if (!profileBtn.contains(e.target) && !profileMenu.contains(e.target)) {
-    profileMenu.classList.remove("show");
-  }
-});
-
-logoutBtn.addEventListener("click", () => {
-  logout();
 });

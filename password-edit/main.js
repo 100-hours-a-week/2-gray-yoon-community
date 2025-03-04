@@ -1,18 +1,7 @@
-import { getCurrentUser, logout, updatePassword } from "../apis/user.js";
+import { updatePassword } from "../apis/user.js";
 import { PASSWORD_ERROR_MESSAGE } from "../constants/message.js";
 import { PASSWORD_REGEX } from "../constants/regex.js";
 import "../components/Header.js";
-
-const profileBtn = document.querySelector(".navbar__profile-btn");
-
-// const profileImgSrc = getCurrentUser().profileImg;
-
-// const imgEl = document.createElement("img");
-// imgEl.classList.add("profile-img");
-// imgEl.alt = "프로필 이미지";
-// imgEl.src = profileImgSrc;
-
-// profileBtn.appendChild(imgEl);
 
 const updatePasswordBtnState = () => {
   if (isNewPasswordValid && isConfirmPasswordValid) {
@@ -89,21 +78,4 @@ form.addEventListener("submit", (e) => {
 
   alert("비밀번호가 변경되었습니다.");
   window.location.href = "/";
-});
-
-const profileMenu = document.querySelector(".profile-menu");
-const logoutBtn = document.querySelector(".logout-btn");
-
-profileBtn.addEventListener("click", () => {
-  profileMenu.classList.toggle("show");
-});
-
-document.addEventListener("click", (e) => {
-  if (!profileBtn.contains(e.target) && !profileMenu.contains(e.target)) {
-    profileMenu.classList.remove("show");
-  }
-});
-
-logoutBtn.addEventListener("click", () => {
-  logout();
 });

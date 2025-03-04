@@ -1,9 +1,6 @@
 import { addView, getAllPosts } from "../apis/post.js";
-import { getCurrentUser, logout } from "../apis/user.js";
 import { formatTimestamp } from "../utils/format.js";
 import "../components/Header.js";
-
-const profileBtn = document.querySelector(".navbar__profile-btn");
 
 const postsUl = document.querySelector(".content__posts");
 
@@ -45,20 +42,3 @@ const renderPosts = (posts) => {
 };
 
 renderPosts(allPosts);
-
-const profileMenu = document.querySelector(".profile-menu");
-const logoutBtn = document.querySelector(".logout-btn");
-
-profileBtn.addEventListener("click", () => {
-  profileMenu.classList.toggle("show");
-});
-
-document.addEventListener("click", (e) => {
-  if (!profileBtn.contains(e.target) && !profileMenu.contains(e.target)) {
-    profileMenu.classList.remove("show");
-  }
-});
-
-logoutBtn.addEventListener("click", () => {
-  logout();
-});

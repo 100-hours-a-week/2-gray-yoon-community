@@ -1,26 +1,7 @@
-import { getCurrentUser, logout, updateUser, withdraw } from "../apis/user.js";
+import { getCurrentUser, updateUser, withdraw } from "../apis/user.js";
 import { NICKNAME_ERROR_MESSAGE } from "../constants/message.js";
 import { NICKNAME_REGEX } from "../constants/regex.js";
 import "../components/Header.js";
-
-const profileBtn = document.querySelector(".navbar__profile-btn");
-
-const profileMenu = document.querySelector(".profile-menu");
-const logoutBtn = document.querySelector(".logout-btn");
-
-profileBtn.addEventListener("click", () => {
-  profileMenu.classList.toggle("show");
-});
-
-document.addEventListener("click", (e) => {
-  if (!profileBtn.contains(e.target) && !profileMenu.contains(e.target)) {
-    profileMenu.classList.remove("show");
-  }
-});
-
-logoutBtn.addEventListener("click", () => {
-  logout();
-});
 
 const { email, nickname, profileImg } = getCurrentUser();
 

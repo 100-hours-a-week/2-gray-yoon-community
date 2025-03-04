@@ -64,13 +64,8 @@ class Header extends HTMLElement {
     }
 
     if (logoutBtn) {
-      logoutBtn.addEventListener("click", async () => {
-        try {
-          await logout();
-          window.location.href = "/index.html";
-        } catch (error) {
-          console.error("Logout failed:", error);
-        }
+      logoutBtn.addEventListener("click", () => {
+        logout();
       });
     }
   }

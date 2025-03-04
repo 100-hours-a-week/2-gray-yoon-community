@@ -3,7 +3,7 @@ import { NICKNAME_ERROR_MESSAGE } from "../constants/message.js";
 import { NICKNAME_REGEX } from "../constants/regex.js";
 import "../components/Header.js";
 
-const { email, nickname, profileImg } = getCurrentUser();
+const { email, nickname, profileImg } = await getCurrentUser();
 
 document.querySelector(".email").textContent = email;
 document.querySelector("#nickname").value = nickname;

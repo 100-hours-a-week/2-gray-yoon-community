@@ -1,0 +1,9 @@
+{
+  "message": "User profile fetched successfully",
+  "data": {
+    "email": "email@email.email",
+    "password": "qwerQWER1234!@#$",
+    "nickname": "익명",
+    "profileImg": "https://images.unsplash.com/photo-1733044271325-3017e877218b?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  }
+}

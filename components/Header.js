@@ -41,12 +41,16 @@ class Header extends HTMLElement {
         this.prevUrl = newValue;
         break;
     }
-    this.render();
+    this.updateContent();
   }
 
   // 컴포넌트가 DOM에 추가될 때 실행
   connectedCallback() {
-    this.render();
+    this.updateContent();
+  }
+
+  async updateContent() {
+    await this.render();
     if (this.showProfileBtn) {
       this.setupProfileMenu();
     }
@@ -58,19 +62,29 @@ class Header extends HTMLElement {
     const logoutBtn = this.querySelector(".logout-btn");
 
     if (profileBtn && profileMenu) {
-      profileBtn.addEventListener("click", () => {
+      // 기존 이벤트 리스너 제거
+      profileBtn.removeEventListener("click", this.toggleMenu);
+      // 새로운 이벤트 리스너 추가
+      this.toggleMenu = () => {
         profileMenu.classList.toggle("hidden");
-      });
+      };
+      profileBtn.addEventListener("click", this.toggleMenu);
     }
 
     if (logoutBtn) {
-      logoutBtn.addEventListener("click", () => {
+      // 기존 이벤트 리스너 제거
+      logoutBtn.removeEventListener("click", this.handleLogout);
+      // 새로운 이벤트 리스너 추가
+      this.handleLogout = () => {
         logout();
-      });
+      };
+      logoutBtn.addEventListener("click", this.handleLogout);
     }
   }
 
-  render() {
+  async render() {
+    const imgSrc = await this.getProfileImage();
+
     this.innerHTML = `
       <header class="navbar">
         <div class="navbar__content">
@@ -88,7 +102,7 @@ class Header extends HTMLElement {
             this.showProfileBtn
               ? `
             <button class="navbar__profile-btn">
-              <img class="profile-img" src="${this.getProfileImage()}" alt="Profile" />
+              <img class="profile-img" src="${imgSrc}" alt="Profile" />
             </button>
             <div class="profile-menu hidden">
               <ul class="profile-menu-list">
@@ -107,9 +121,9 @@ class Header extends HTMLElement {
     `;
   }
 
-  getProfileImage() {
+  async getProfileImage() {
     try {
-      const currentUser = getCurrentUser();
+      const currentUser = await getCurrentUser();
       return currentUser?.profileImg || "";
     } catch (error) {
       console.error("Failed to get profile image:", error);

@@ -1,3 +1,5 @@
+import { apiRequest } from "./apiRequest.js";
+
 export const getAllUsers = () => {
   return JSON.parse(localStorage.getItem("users"));
 };
@@ -8,12 +10,17 @@ export const getUserDataWithEmail = (email) => {
   return allUsers.find((user) => user.email === email);
 };
 
-export const getCurrentUser = () => {
-  return JSON.parse(localStorage.getItem("currentUser"));
+// export const getCurrentUser = () => {
+//   return JSON.parse(localStorage.getItem("currentUser"));
+// };
+export const getCurrentUser = async () => {
+  const data = await apiRequest("/currentUser.json");
+
+  return data.data;
 };
 
-export const updateCurrentUserInfo = (nickname, profileImg) => {
-  const currentUser = getCurrentUser();
+export const updateCurrentUserInfo = async (nickname, profileImg) => {
+  const currentUser = await getCurrentUser();
 
   localStorage.setItem(
     "currentUser",
@@ -21,8 +28,8 @@ export const updateCurrentUserInfo = (nickname, profileImg) => {
   );
 };
 
-export const updateCurrentUserPassword = (password) => {
-  const currentUser = getCurrentUser();
+export const updateCurrentUserPassword = async (password) => {
+  const currentUser = await getCurrentUser();
 
   localStorage.setItem(
     "currentUser",
@@ -35,6 +42,13 @@ export const signup = (data) => {
 
   localStorage.setItem("users", JSON.stringify([...users, data]));
 };
+// export const signup = async (data) => {
+//   const data = await apiRequest("/auth/signup", "POST", {
+//     data,
+//   });
+
+//   return data;
+// };
 
 export const checkEmailDuplication = (email) => {
   const users = getAllUsers() || [];
@@ -54,8 +68,8 @@ export const confirmPassword = (email, password) => {
   return userData?.password === password;
 };
 
-export const updatePassword = (password) => {
-  const currentUser = getCurrentUser();
+export const updatePassword = async (password) => {
+  const currentUser = await getCurrentUser();
   const users = getAllUsers();
 
   updateCurrentUserPassword(password);
@@ -74,9 +88,18 @@ export const updatePassword = (password) => {
     )
   );
 };
+// export const updatePassword = async (password) => {
+//   const data = await apiRequest("/user/me", "PATCH", {
+//     data: {
+//       password,
+//     },
+//   });
 
-export const updateUser = (nickname, profileImg) => {
-  const currentUser = getCurrentUser();
+//   return data;
+// };
+
+export const updateUser = async (nickname, profileImg) => {
+  const currentUser = await getCurrentUser();
   const users = getAllUsers();
 
   updateCurrentUserInfo(nickname, profileImg);
@@ -96,15 +119,30 @@ export const updateUser = (nickname, profileImg) => {
     )
   );
 };
+// export const updateUser = async (id, nickname, profileImg) => {
+//   const data = await apiRequest(`/user/${id}`, "PATCH", {
+//     data: {
+//       nickname,
+//       profileImg,
+//     },
+//   });
+
+//   return data;
+// };
 
 export const logout = () => {
   localStorage.removeItem("currentUser");
   window.location.href = "/index.html";
 };
+// export const logout = async () => {
+//   const data = await apiRequest("/auth/logout", "POST");
 
-export const withdraw = () => {
+//   return data;
+// };
+
+export const withdraw = async () => {
   const users = getAllUsers();
-  const currentUser = getCurrentUser();
+  const currentUser = await getCurrentUser();
 
   logout();
   localStorage.setItem(
@@ -112,3 +150,8 @@ export const withdraw = () => {
     JSON.stringify(users.filter((user) => user.email !== currentUser.email))
   );
 };
+// export const withdraw = async () => {
+//   const data = await apiRequest("/user/me", "DELETE");
+
+//   return data;
+// };

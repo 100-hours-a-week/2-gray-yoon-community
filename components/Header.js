@@ -1,3 +1,5 @@
+import { getCurrentUser, logout } from "../apis/user.js";
+
 class Header extends HTMLElement {
   constructor() {
     super();
@@ -7,7 +9,6 @@ class Header extends HTMLElement {
     this.loadStyles();
   }
 
-  // CSS 로드 메서드 추가
   async loadStyles() {
     try {
       const response = await fetch("/components/Header.css");
@@ -22,11 +23,11 @@ class Header extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["show-prev-btn", "show-profile-btn", "prev-url"]; // 관찰할 속성 목록
+    return ["show-prev-btn", "show-profile-btn", "prev-url"];
   }
 
-  // 속성이 변경될 때 실행
   attributeChangedCallback(name, _, newValue) {
+    console.log(name, newValue);
     switch (name) {
       case "show-prev-btn":
         this.showPrevBtn = newValue === "true";
@@ -41,7 +42,6 @@ class Header extends HTMLElement {
     this.updateContent();
   }
 
-  // 컴포넌트가 DOM에 추가될 때 실행
   connectedCallback() {
     this.updateContent();
   }
@@ -59,23 +59,15 @@ class Header extends HTMLElement {
     const logoutBtn = this.querySelector(".logout-btn");
 
     if (profileBtn && profileMenu) {
-      // 기존 이벤트 리스너 제거
-      profileBtn.removeEventListener("click", this.toggleMenu);
-      // 새로운 이벤트 리스너 추가
-      this.toggleMenu = () => {
+      profileBtn.addEventListener("click", () => {
         profileMenu.classList.toggle("hidden");
-      };
-      profileBtn.addEventListener("click", this.toggleMenu);
+      });
     }
 
     if (logoutBtn) {
-      // 기존 이벤트 리스너 제거
-      logoutBtn.removeEventListener("click", this.handleLogout);
-      // 새로운 이벤트 리스너 추가
-      this.handleLogout = () => {
+      logoutBtn.addEventListener("click", () => {
         logout();
-      };
-      logoutBtn.addEventListener("click", this.handleLogout);
+      });
     }
   }
 
@@ -129,9 +121,6 @@ class Header extends HTMLElement {
   }
 }
 
-// 컴포넌트 등록
 customElements.define("app-header", Header);
-
-import { getCurrentUser, logout } from "../apis/user.js";
 
 export default Header;

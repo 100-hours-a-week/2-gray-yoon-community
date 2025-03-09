@@ -27,7 +27,6 @@ class Header extends HTMLElement {
   }
 
   attributeChangedCallback(name, _, newValue) {
-    console.log(name, newValue);
     switch (name) {
       case "show-prev-btn":
         this.showPrevBtn = newValue === "true";
